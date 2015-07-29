@@ -40,7 +40,7 @@ var changeLogo = function() {
       evn.target.href = items[nextToAdd].link;
       var outLogo = evn.target.getElementsByTagName('img')[0];
       outLogo.id = items[nextToAdd].name;
-      outLogo.src = items[nextToAdd].image;    
+      outLogo.src = items[nextToAdd].image;
       outBox.classList.remove('hide');
       evn.target.removeEventListener('transitionend', animationFoo);
       nextToChange++;
@@ -53,7 +53,7 @@ var changeLogo = function() {
       }
     }
   });
-}
+};
 
 var interval = setInterval(changeLogo, 3000);
 
