@@ -63,4 +63,4 @@ slider.addEventListener('mouseover', function(){
 
 slider.addEventListener('mouseout', function(){
   interval = setInterval(changeLogo, 3000);
-})
+});
