@@ -115,7 +115,7 @@ class ed02d314199b8b0 extends Module {
     public function install() {
 
         if (!parent::install()) return false;
-        if (!$this->registerHook('home')) return false;
+        if (!$this->registerHook('footer')) return false;
         if (!$this->_createKinkyTable()) return false;
         if (!$this->_createKinkyConfigTable()) return false;
         if (!$this->_insertStartUpSlides()) return false;
@@ -747,7 +747,7 @@ class ed02d314199b8b0 extends Module {
 
         }
 
-    function hookHome($params) {
+    function hookFooter($params) {
 
         global $smarty, $protocol_content, $server_host;
 
@@ -809,25 +809,25 @@ class ed02d314199b8b0 extends Module {
 
     function hookLeftColumn($params) {
 
-        return $this->hookHome($params);
+        return $this->hookFooter($params);
 
     }
 
     function hookRightColumn($params) {
 
-        return $this->hookHome($params);
+        return $this->hookFooter($params);
 
     }
 
     function hookTop($params) {
 
-        return $this->hookHome($params);
+        return $this->hookFooter($params);
 
     }
 
     public function hookHeader($params) {
 
-        return $this->hookHome($params);
+        return $this->hookFooter($params);
 
     }
 
