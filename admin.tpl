@@ -1,9 +1,12 @@
 <form action="{$uri}" method="post" enctype="multipart/form-data">
   <div class="margin-form">
-    <label> First: </label>
-    <input type="text" name="first_text" value="{$first_var}" >
-    <label> Second: </label>
-    <input type="text" name="second_text" value="{$second_var}" >
-    <input type="submit" name="submit_text" value="Update" class="button" />
+    <fieldset>
+      <legend>Wybierz kolor</legend>
+      <label> URL: </label>
+      <input type="text" name="first_text" value="{$first_url}" >
+      <label> Image: </label>
+      <input type="file" name="{$first_image}"  style="width:200px"  />
+      <input type="submit" name="submit_text" value="Update" class="button" />
+    </fieldset>
   </div>
 </form>
