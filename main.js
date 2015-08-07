@@ -9,7 +9,7 @@ var Logo = function(item) {
   logoBox.appendChild(logo);
   logo.id = item.name;
   logo.src = item.image;
-}
+};
 
 var items = [
   {'name' : 'name1', 'image' : 'images/01.png', 'link' : 'http://www.legionisci.com'},
