@@ -429,7 +429,7 @@ class ed02d314199b8b0 extends Module {
 
                 if (isset($_FILES[$this->name.'_image'.$_thisID]) AND isset($_FILES[$this->name.'_image'.$_thisID]['tmp_name']) AND !empty($_FILES[$this->name.'_image'.$_thisID]['tmp_name'])) {
 
-                        if ($error = checkImage($_FILES[$this->name.'_image'.$_thisID], 4000000)) {
+                        if ($error = @checkImage($_FILES[$this->name.'_image'.$_thisID], 4000000)) {
                                         $this->_postErrors[]= $error;
                                 } else
 
@@ -443,11 +443,11 @@ class ed02d314199b8b0 extends Module {
 
                                         mkdir(str_replace('//','/',$_target_path), 0755, true);
 
-                                        if (move_uploaded_file($_FILES[$this->name.'_image'.$_thisID]['tmp_name'],$_target_path.$_FILES[$this->name.'_image'.$_thisID]['name'])) {
+                                        if (move_uploaded_file($_FILES[$this->name.'_image'.$_thisID]['tmp_name'],$_target_path.KINKYSLIDER_DEFAULT_FILE_NAME.'.png')) {
 
-                                                $this->bazinga_load($_target_path.$_FILES[$this->name.'_image'.$_thisID]['name']);
-                                                $this->bazinga_resizeZoomCrop($this->kinkyslider_calculated_image_width,$this->kinkyslider_calculated_image_height);
-                                                $this->bazinga_save($_target_path.KINKYSLIDER_DEFAULT_FILE_NAME.'.jpg');
+                                                // $this->bazinga_load($_target_path.$_FILES[$this->name.'_image'.$_thisID]['name']);
+                                                // $this->bazinga_resizeZoomCrop($this->kinkyslider_calculated_image_width,$this->kinkyslider_calculated_image_height);
+                                                //$this->bazinga_save($_target_path.KINKYSLIDER_DEFAULT_FILE_NAME.'.png');
 
                                                 $_thisImageDir=$_new_picture_dir;
                                                 $_thisSlideIsChanged=true;
@@ -683,7 +683,7 @@ class ed02d314199b8b0 extends Module {
 
                     if (($_thisImageDir!=null) || ($_thisImageDir!='')) {
 
-                            $this->_html .= '<img src="'._MODULE_DIR_.$this->name.'/uploads/images/'.$_thisImageDir.'/'.KINKYSLIDER_DEFAULT_FILE_NAME.'.jpg" width="300" />';
+                            $this->_html .= '<img src="'._MODULE_DIR_.$this->name.'/uploads/images/'.$_thisImageDir.'/'.KINKYSLIDER_DEFAULT_FILE_NAME.'.png" width="300" />';
 
                     } else
 
@@ -786,7 +786,7 @@ class ed02d314199b8b0 extends Module {
             if ($kinkySliderOutputSlide['kinky_active']==1) {
 
                 $kinkySliderData[]=array(
-                    'image'=>_MODULE_DIR_.$this->name.'/uploads/images/'.$kinkySliderOutputSlide['kinky_imagedir'].'/'.KINKYSLIDER_DEFAULT_FILE_NAME.'.jpg',
+                    'image'=>_MODULE_DIR_.$this->name.'/uploads/images/'.$kinkySliderOutputSlide['kinky_imagedir'].'/'.KINKYSLIDER_DEFAULT_FILE_NAME.'.png',
                     'link'=>$kinkySliderOutputSlide['kinky_link'],
                     'header'=>$kinkySliderOutputSlide['kinky_header'],
                     'price'=>$kinkySliderOutputSlide['kinky_price'],
@@ -894,7 +894,7 @@ class ed02d314199b8b0 extends Module {
             }
     }
 
-    function bazinga_save($filename, $image_type=IMAGETYPE_JPEG, $compression=90, $permissions=null) {
+    function bazinga_save($filename, $image_type=IMAGETYPE_PNG, $compression=90, $permissions=null) {
 
             if( $image_type == IMAGETYPE_JPEG ) {
                     imagejpeg($this->kinkyslider_image,$filename,$compression);
