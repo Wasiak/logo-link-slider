@@ -1,4 +1,21 @@
 var slider = document.getElementById('slider');
+var Logo = function(item) {
+  var logoBox = document.createElement('a');
+  slider.appendChild(logoBox);
+  logoBox.href = item.link;
+
+  var logo = document.createElement('img');
+  logoBox.appendChild(logo);
+  logo.id = item.name;
+  logo.src = item.image;
+};
+
+var initLogos = function() {
+  for (i = 0; i < 4; i++) {
+    new Logo(items[i]);
+  }
+}();
+
 var nextToChange = 0;
 var nextToAdd = 4;
 var changeLogo = function() {
