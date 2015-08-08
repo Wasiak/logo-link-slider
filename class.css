@@ -7,11 +7,10 @@ body {
   display: block;
   width: 1000px;
   height: 200px;
-  background-color: #333;
   margin: auto;
   margin-top: 20px;
   overflow: hidden;
-  padding: 0;  
+  padding: 0;
   box-sizing: border-box;
   padding-top: 25px;
 }
@@ -20,10 +19,9 @@ body {
   width: 25%;
   height: 200px;
   text-align: center;
-  /*background-color: red;*/
   box-sizing: border-box;
-  transform: scale(1);
   transition: transform 0.6s;
+  transform: scale(1);
 }
 .main-container a img  {
   display: block;
@@ -31,6 +29,6 @@ body {
   height: auto;
   margin: auto;
 }
-.main-container a.hide {
+.main-container a.ed2-hide {
   transform: scale(0);
 }
