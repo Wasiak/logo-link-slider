@@ -25,7 +25,7 @@ class ed02d314199b8b0 extends Module
 
   public function install() {
     parent::install();
-    if(!$this->registerHook('leftColumn')) return false;
+    if(!$this->registerHook('footer')) return false;
     return true;
   }
 
@@ -58,7 +58,7 @@ class ed02d314199b8b0 extends Module
     $this->_html .= '</form>';
   }
 
-  public function hookLeftColumn() {
+  public function hookFooter() {
 
     global $smarty;
     $smarty->assign('our_text',Configuration::get($this->name.'_text_to_show'));
