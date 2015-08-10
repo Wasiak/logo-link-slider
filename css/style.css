@@ -1,0 +1,185 @@
+@font-face {
+    font-family: 'SFMoviePosterBold';
+    src: url('fonts/sfmovieposter-bold-webfont.eot');
+    src: url('fonts/sfmovieposter-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/sfmovieposter-bold-webfont.woff') format('woff'),
+         url('fonts/sfmovieposter-bold-webfont.ttf') format('truetype'),
+         url('fonts/sfmovieposter-bold-webfont.svg#SFMoviePosterBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.bazingaPreloading {
+
+    visibility: hidden;
+    
+}
+
+#bazingaSliderContainer {
+
+    background:url(../img/pattern.png);
+    background-repeat:repeat;
+
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -o-border-radius:3px;
+    -webkit-border-radius:3px;
+
+    box-shadow:0px 1px 2px rgba(125,125,125,0.5);
+    -moz-box-shadow:0px 1px 2px rgba(125,125,125,0.5);
+    -o-box-shadow:0px 1px 2px rgba(125,125,125,0.5);
+    -webkit-box-shadow:0px 1px 2px rgba(125,125,125,0.5);
+
+    overflow:hidden;
+    position:relative;
+
+}
+
+#kinkyPreloader {
+
+    background:url(../img/loading.gif);
+    height:16px;
+    left:49%;
+    position:absolute;
+    top:49%;
+    width:16px;
+    
+}
+
+ul#bazingaSliderContent {
+
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    width:556px;
+
+}
+
+ul#bazingaSliderContent li {
+
+    left:0px;
+    margin:0px;
+    padding:0px;
+    position:absolute;
+    top:0px;
+    z-index:100;
+    cursor:pointer;
+
+}
+
+ul#bazingaSliderContent li .bazingaHeader {
+   
+    box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    -moz-box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    -o-box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    -webkit-box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    letter-spacing:4px;
+    position:absolute;
+    text-transform:uppercase;
+
+}
+
+ul#bazingaSliderContent li .bazingaHeader a {
+
+    text-decoration:none;
+}
+
+ul#bazingaSliderContent li .bazingaPrice a {
+
+    text-decoration:none;
+}
+
+ul#bazingaSliderContent li .bazingaPrice {
+
+    box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    -moz-box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    -o-box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    -webkit-box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    font-weight:lighter;
+    opacity:0;
+    -moz-opacity:0;
+    -webkit-opacity:0;
+    -o-opacity:0;
+    filter:alpha(opacity=0);
+    -ms-filter:alpha(opacity=0);
+    position:absolute;
+    text-transform:uppercase;
+
+}
+
+.gradient {
+
+    background:url(../img/gradient.png);
+    background-repeat:repeat-x;
+    height:123px;
+    left:0px;
+    position:absolute;
+    top:0px;    
+    z-index:200;
+}
+
+#kinkyTurnLeft {
+
+    position:absolute;
+    width:37px;
+    height:37px;
+    overflow:hidden;
+    text-align:center;    
+    font-size:20px;
+    font-family:arial;
+    line-height:34px;
+    z-index:500;
+    cursor:pointer;
+    box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    -moz-box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    -o-box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    -webkit-box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    opacity:0;
+    -moz-opacity:0;
+    -webkit-opacity:0;
+    filter:alpha(opacity=0);
+    -ms-filter:alpha(opacity=0);
+
+}
+
+#kinkyTurnRight {
+
+    position:absolute;
+    width:37px;
+    height:37px;
+    overflow:hidden;
+    text-align:center;
+    font-size:20px;
+    font-family:arial;
+    line-height:34px;
+    z-index:500;
+    cursor:pointer;
+    box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    -moz-box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    -o-box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    -webkit-box-shadow:1px 1px 2px rgba(125,125,125,0.5);
+    opacity:0;
+    -moz-opacity:0;
+    -webkit-opacity:0;
+    filter:alpha(opacity=0);
+    -ms-filter:alpha(opacity=0);
+}
+
+
+.turnSpan span{
+
+    position:relative;
+
+}
+
+.turnSpan:active span {
+
+    top:1px;
+}
+
+.makeRelative {
+
+    position:relative;
+    
+}
