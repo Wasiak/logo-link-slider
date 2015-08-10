@@ -7,3 +7,5 @@
     <input type="submit" name="submit_text" value="Update" class="button" />
   </div>
 </form>
+
+{$saved_json}
