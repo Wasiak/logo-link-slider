@@ -35,14 +35,21 @@ class ed02d314199b8b0 extends Module
     if(Tools::isSubmit('submit_text')) {
 
       Configuration::updateValue(
-        $this->name.'_text_to_show',
-        Tools::getValue('the_text')
+        $this->name.'first_var',
+        Tools::getValue('first_text')
+      );
+
+      Configuration::updateValue(
+        $this->name.'second_var',
+        Tools::getValue('second_text')
       );
 
     }
 
-    $smarty->assign('text_to_show',Configuration::get($this->name.'_text_to_show'));
+    $smarty->assign('first_var',Configuration::get($this->name.'first_var'));
+    $smarty->assign('second_var',Configuration::get($this->name.'second_var'));
     $smarty->assign('uri', $_SERVER['REQUEST_URI']);
+
     return $this->display(__FILE__, 'admin.tpl');
 
     // $this->_generateForm();
