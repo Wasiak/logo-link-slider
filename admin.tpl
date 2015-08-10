@@ -1,4 +1,4 @@
-<form action="{$uri}" method="post">
+<form action="{$uri}" method="post" enctype="multipart/form-data">
   <div class="margin-form">
     <label> First: </label>
     <input type="text" name="first_text" value="{$first_var}" >
@@ -7,5 +7,3 @@
     <input type="submit" name="submit_text" value="Update" class="button" />
   </div>
 </form>
-
-{$saved_json}
