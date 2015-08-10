@@ -30,6 +30,7 @@ class ed02d314199b8b0 extends Module
   }
 
   public function getContent() {
+    global $smarty;
 
     if(Tools::isSubmit('submit_text')) {
 
@@ -40,22 +41,26 @@ class ed02d314199b8b0 extends Module
 
     }
 
-    $this->_generateForm();
-    return $this->_html;
+    $smarty->assign('text_to_show',Configuration::get($this->name.'_text_to_show'));
+    $smarty->assign('uri', $_SERVER['REQUEST_URI']);
+    return $this->display(__FILE__, 'admin.tpl');
+
+    // $this->_generateForm();
+    // return $this->_html;
   }
 
   private function _generateForm() {
 
     $textToShow=Configuration::get($this->name.'_text_to_show');
 
-    $this->_html .= '<form action="'.$_SERVER['REQUEST_URI'].'" method="post">';
-    $this->_html .= '<label>'.$this->l('Enter your text: ').'</label>';
-    $this->_html .= '<div class="margin-form">';
-    $this->_html .= '<input type="text" name="the_text" value="'.$textToShow.'" >';
-    $this->_html .= '<input type="submit" name="submit_text" ';
-    $this->_html .= 'value="'.$this->l('Update the text').'" class="button" />';
-    $this->_html .= '</div>';
-    $this->_html .= '</form>';
+    // $this->_html .= '<form action="'.$_SERVER['REQUEST_URI'].'" method="post">';
+    // $this->_html .= '<label>'.$this->l('Enter your text: ').'</label>';
+    // $this->_html .= '<div class="margin-form">';
+    // $this->_html .= '<input type="text" name="the_text" value="'.$textToShow.'" >';
+    // $this->_html .= '<input type="submit" name="submit_text" ';
+    // $this->_html .= 'value="'.$this->l('Update the text').'" class="button" />';
+    // $this->_html .= '</div>';
+    // $this->_html .= '</form>';
   }
 
   public function hookFooter() {
