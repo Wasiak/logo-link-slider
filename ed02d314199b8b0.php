@@ -429,7 +429,7 @@ class ed02d314199b8b0 extends Module {
 
                 if (isset($_FILES[$this->name.'_image'.$_thisID]) AND isset($_FILES[$this->name.'_image'.$_thisID]['tmp_name']) AND !empty($_FILES[$this->name.'_image'.$_thisID]['tmp_name'])) {
 
-                        if ($error = checkImage($_FILES[$this->name.'_image'.$_thisID], 4000000)) {
+                        if ($error = @checkImage($_FILES[$this->name.'_image'.$_thisID], 4000000)) {
                                         $this->_postErrors[]= $error;
                                 } else
 
@@ -443,11 +443,11 @@ class ed02d314199b8b0 extends Module {
 
                                         mkdir(str_replace('//','/',$_target_path), 0755, true);
 
-                                        if (move_uploaded_file($_FILES[$this->name.'_image'.$_thisID]['tmp_name'],$_target_path.$_FILES[$this->name.'_image'.$_thisID]['name'])) {
+                                        if (move_uploaded_file($_FILES[$this->name.'_image'.$_thisID]['tmp_name'],$_target_path.KINKYSLIDER_DEFAULT_FILE_NAME.'.png')) {
 
-                                                $this->bazinga_load($_target_path.$_FILES[$this->name.'_image'.$_thisID]['name']);
-                                                $this->bazinga_resizeZoomCrop($this->kinkyslider_calculated_image_width,$this->kinkyslider_calculated_image_height);
-                                                $this->bazinga_save($_target_path.KINKYSLIDER_DEFAULT_FILE_NAME.'.jpg');
+                                                // $this->bazinga_load($_target_path.$_FILES[$this->name.'_image'.$_thisID]['name']);
+                                                // $this->bazinga_resizeZoomCrop($this->kinkyslider_calculated_image_width,$this->kinkyslider_calculated_image_height);
+                                                //$this->bazinga_save($_target_path.KINKYSLIDER_DEFAULT_FILE_NAME.'.png');
 
                                                 $_thisImageDir=$_new_picture_dir;
                                                 $_thisSlideIsChanged=true;
@@ -603,23 +603,9 @@ class ed02d314199b8b0 extends Module {
                 $this->_html .= '<br />';
                 $this->_html .= '<form action="'.$_SERVER['REQUEST_URI'].'" method="post" enctype="multipart/form-data">';
                 $this->_html .= '<fieldset>';
-                $this->_html .= 'Bazinga\'s Kinky Slider v. 0.1<br />';
-                $this->_html .= 'Created by Bazinga Designs 2011<br />';
-                $this->_html .= 'Visit us at <a href="http://www.bazingadesigns.com/en"><span style="color:#FE57A1;">www.bazingadesigns.com/en</span></a><br />';
-                $this->_html .= 'License: GNU General Public License 3';
 
                 $this->_html .= '<br /><br />';
-				/* testing */
-                $this->_html.='<script type="text/javascript" src="'._MODULE_DIR_.$this->name.'/js/farbtastic.js"></script>';
-                $this->_html.='<link rel="stylesheet" media="screen" type="text/css" href="'._MODULE_DIR_.$this->name.'/js/farbtastic.css" />';
-                $this->_html.='<form><input type="text" id="color" name="color" value="#123456" /></form><div id="colorpicker"></div>';
-                $this->_html.='<script type="text/javascript">$(document).ready(function() { $("#colorpicker").farbtastic("#color");});</script>';
-
-                /* end testing */
-
-
-                $this->_html .= '<br /><br />';
-                $this->_html .= '<legend>'.$this->l('Manage Kinky Slider slides &raquo; www.bazingadesigns.com/en').'</legend>';
+                $this->_html .= '<legend>'.$this->l('Manage slides').'</legend>';
                 $this->_html .= '<input type="submit" name="addNewSlide" value="'.$this->l('Add new slide ✚').'" class="button" />';
                 $this->_html .= ' &nbsp ';
                 $this->_html .= '<input type="submit" name="updateSlides" value="'.$this->l('Update slides ✈').'" class="button" />';
@@ -662,16 +648,6 @@ class ed02d314199b8b0 extends Module {
                     $this->_html.='<input type="text" name="'.$this->name.'_link'.$_thisID.'" value="'.$_thisLink.'" style="width:200px" />';
                     $this->_html.='</div>';
 
-                    $this->_html.='<label>Slide header:</label>';
-                    $this->_html.='<div class="margin-form">';
-                    $this->_html.='<input type="text" name="'.$this->name.'_header'.$_thisID.'" value="'.$_thisHeader.'" style="width:200px" />';
-                    $this->_html.='</div>';
-
-                    $this->_html.='<label>Slide price tag:</label>';
-                    $this->_html.='<div class="margin-form">';
-                    $this->_html.='<input type="text" name="'.$this->name.'_price'.$_thisID.'" value="'.$_thisPrice.'" style="width:200px" />';
-                    $this->_html.='</div>';
-
                     $this->_html.='<label>Show on the page (active) ?</label>';
                     $this->_html.='<div class="margin-form">';
                     $this->_html.='<input type="checkbox" name="'.$this->name.'_active'.$_thisID.'" value="1" '.$_isCheckedString.'>';
@@ -683,7 +659,7 @@ class ed02d314199b8b0 extends Module {
 
                     if (($_thisImageDir!=null) || ($_thisImageDir!='')) {
 
-                            $this->_html .= '<img src="'._MODULE_DIR_.$this->name.'/uploads/images/'.$_thisImageDir.'/'.KINKYSLIDER_DEFAULT_FILE_NAME.'.jpg" width="300" />';
+                            $this->_html .= '<img src="'._MODULE_DIR_.$this->name.'/uploads/images/'.$_thisImageDir.'/'.KINKYSLIDER_DEFAULT_FILE_NAME.'.png" width="300" />';
 
                     } else
 
@@ -705,42 +681,7 @@ class ed02d314199b8b0 extends Module {
                 $this->_html .= '</fieldset>';
                 $this->_html .= '</form>';
 
-                // show the main configuration options
-
-                $this->_html .='<br />';
-
-                $this->_html .= '';
-                $this->_html .= '<form action="'.$_SERVER['REQUEST_URI'].'" method="post" enctype="multipart/form-data">';
-                $this->_html .= '<fieldset>';
-                $this->_html .= '<input type="submit" name="updateSettings" value="'.$this->l('Update configuration ✪').'" class="button" />';
-                $this->_html .= '<hr><hr>';
-                $this->_html .= '<legend>'.$this->l('Configure Kinky Slider &raquo; www.bazingadesigns.com/en').'</legend>';
-
-
-                foreach ($this->kinkyConfigurations as $kinkyConfigurationPartKey=>$kinkyConfigurationPartLabel) {
-
-                    $this->_html .= '<h2>'.$kinkyConfigurationPartLabel.'</h2><br />';
-
-                    foreach ($this->kinkyslider_config as $kinkyConfigRow) {
-
-                        if ($kinkyConfigRow['kinky_category']==$kinkyConfigurationPartKey) {
-                            $this->_html .= '<label>'.$kinkyConfigRow['kinky_label'].'</label>';
-
-                            $this->_html .= '<div class="margin-form">';
-                            $this->_html .= '<input type="text" name="'.$this->name.'_config_'.$kinkyConfigRow['kinky_key'].'" value="'.$kinkyConfigRow['kinky_value'].'" />';
-                            $this->_html .= '</div>';
-
-                            $this->_html .= '<br class="clear" />';
-                        }
-                    }
-
-                }
-
-
-                $this->_html .= '<br /><br />';
-
-                $this->_html .= '</fieldset>';
-                $this->_html .= '</form>';
+              
 
 
 
@@ -786,7 +727,7 @@ class ed02d314199b8b0 extends Module {
             if ($kinkySliderOutputSlide['kinky_active']==1) {
 
                 $kinkySliderData[]=array(
-                    'image'=>_MODULE_DIR_.$this->name.'/uploads/images/'.$kinkySliderOutputSlide['kinky_imagedir'].'/'.KINKYSLIDER_DEFAULT_FILE_NAME.'.jpg',
+                    'image'=>_MODULE_DIR_.$this->name.'/uploads/images/'.$kinkySliderOutputSlide['kinky_imagedir'].'/'.KINKYSLIDER_DEFAULT_FILE_NAME.'.png',
                     'link'=>$kinkySliderOutputSlide['kinky_link'],
                     'header'=>$kinkySliderOutputSlide['kinky_header'],
                     'price'=>$kinkySliderOutputSlide['kinky_price'],
@@ -894,7 +835,7 @@ class ed02d314199b8b0 extends Module {
             }
     }
 
-    function bazinga_save($filename, $image_type=IMAGETYPE_JPEG, $compression=90, $permissions=null) {
+    function bazinga_save($filename, $image_type=IMAGETYPE_PNG, $compression=90, $permissions=null) {
 
             if( $image_type == IMAGETYPE_JPEG ) {
                     imagejpeg($this->kinkyslider_image,$filename,$compression);
