@@ -26,7 +26,6 @@ var Logo = function(item) {
 };
 
 var initLogos = function() {
-  console.log('elo');
   if (screen.width >= 767) {
     for (i = 0; i < 4; i++) {
       new Logo(items[i]);
@@ -49,7 +48,7 @@ var initLogos = function() {
 var nextToChange = 0;
 var nextToAdd = 4;
 var mobileNextAdd = function() {
-    if (manufacturers_slider.classList.contains('mobile')) {
+  if (manufacturers_slider.classList.contains('mobile')) {
     nextToAdd = 1;
   } else if (manufacturers_slider.classList.contains('tablet')) {
     nextToAdd = 2;
@@ -71,8 +70,6 @@ var changeLogo = function() {
       evn.target.removeEventListener('transitionend', animationFoo);
       if (manufacturers_slider.classList.contains('mobile')) {
         nextToChange = 0;
-      } else if (manufacturers_slider.classList.contains('tablet')) {
-        nextToChange++; 
       } else {
         nextToChange++;
       }
