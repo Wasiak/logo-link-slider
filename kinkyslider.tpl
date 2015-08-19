@@ -26,13 +26,38 @@ var Logo = function(item) {
 };
 
 var initLogos = function() {
-  for (i = 0; i < 4; i++) {
-    new Logo(items[i]);
+  console.log('elo');
+  if (screen.width >= 767) {
+    for (i = 0; i < 4; i++) {
+      new Logo(items[i]);
+      manufacturers_slider.classList.remove('tablet');
+      manufacturers_slider.classList.remove('mobile');
+    }
+  } else if (screen.width > 480 && screen.width < 768){
+      for (i = 0; i < 2; i++) {
+        new Logo(items[i]);
+        manufacturers_slider.classList.remove('mobile');
+        manufacturers_slider.classList.add('tablet');
+      }
+  } else {
+    new Logo(items[0]);
+    manufacturers_slider.classList.remove('tablet');
+    manufacturers_slider.classList.add('mobile');
   }
-}();
+};
 
 var nextToChange = 0;
 var nextToAdd = 4;
+var mobileNextAdd = function() {
+    if (manufacturers_slider.classList.contains('mobile')) {
+    nextToAdd = 1;
+  } else if (manufacturers_slider.classList.contains('tablet')) {
+    nextToAdd = 2;
+  } else {
+    nextToAdd = 4;
+  }
+}();
+
 var changeLogo = function() {
   var outBox = manufacturers_slider.getElementsByTagName('a')[nextToChange];
   outBox.classList.add('ed2-hide');
@@ -44,8 +69,17 @@ var changeLogo = function() {
       outLogo.src = items[nextToAdd].image;
       outBox.classList.remove('ed2-hide');
       evn.target.removeEventListener('transitionend', animationFoo);
-      nextToChange++;
+      if (manufacturers_slider.classList.contains('mobile')) {
+        nextToChange = 0;
+      } else if (manufacturers_slider.classList.contains('tablet')) {
+        nextToChange++; 
+      } else {
+        nextToChange++;
+      }
       nextToAdd++;
+      if (nextToChange === 2 && manufacturers_slider.classList.contains('tablet')) {
+        nextToChange = 0;
+      }
       if (nextToChange === 4) {
         nextToChange = 0;
       }
@@ -55,6 +89,11 @@ var changeLogo = function() {
     }
   });
 };
+
+var addEvent = function() {
+  window.addEventListener('resize', initLogos);
+  window.addEventListener('resize', mobileNextAdd);
+}();
 
 var interval = setInterval(changeLogo, 3000);
 
@@ -66,5 +105,6 @@ manufacturers_slider.addEventListener('mouseout', function(){
   interval = setInterval(changeLogo, 3000);
 });
 
+initLogos();
 {/literal}
 </script>
