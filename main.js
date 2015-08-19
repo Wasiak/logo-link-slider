@@ -11,8 +11,12 @@ var Logo = function(item) {
 };
 
 var initLogos = function() {
-  for (i = 0; i < 4; i++) {
-    new Logo(items[i]);
+  if (screen.width > 480) {
+    for (i = 0; i < 4; i++) {
+      new Logo(items[i]);
+    }
+  } else {
+    new Logo(items[0]);
   }
 }();
 

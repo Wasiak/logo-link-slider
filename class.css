@@ -35,3 +35,12 @@ body {
 .main-container a.ed2-hide {
   transform: scale(0);
 }
+.mobile a {
+  width: 100%;
+}
+.mobile a img {
+  width: auto;
+}
+.tablet a {
+  width: 50%;
+}
